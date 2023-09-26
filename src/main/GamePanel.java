@@ -17,9 +17,9 @@ public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private float xDelta = 100;
     private float yDelta = 100;
-    private BufferedImage img, subImage;
+    private BufferedImage img;
     private BufferedImage[][] animations;
-    private int aniTick, aniIndex, aniSpeed = 15;
+    private int aniTick, aniIndex, aniSpeed = 40;
     private int playerAction = IDLE;
     private int playerDir = -1;
     private boolean moving = false;
@@ -83,6 +83,7 @@ public class GamePanel extends JPanel {
     public void setMoving(boolean moving){
         this.moving = moving;
     }
+
     private void setAnimation() {
         if(moving){
             playerAction = RUNNING;
@@ -141,4 +142,9 @@ public class GamePanel extends JPanel {
     }
 
 
+    public void updateGame() {
+        updateAnimationTick();
+        setAnimation();
+        updatePos();
+    }
 }
